@@ -65,7 +65,9 @@ public class WeatherView extends JPanel implements PropertyChangeListener {
   public void propertyChange(PropertyChangeEvent theEvent) {
     // Gets notified of property changes and updates labels. 
     if (PROPERTY_TEMP.equals(theEvent.getPropertyName())) {
-      myTempLbl.setText("Temperature: " + theEvent.getNewValue() + " degrees F");
+    	
+      myTempLbl.setText("Temperature: " + theEvent.getNewValue() + " degrees");
+      
     } else if (PROPERTY_WIND.equals(theEvent.getPropertyName())) {
       myWindLbl.setText("Wind Speed: " + theEvent.getNewValue() + "mph");
     } else if (PROPERTY_RAIN.equals(theEvent.getPropertyName())) {

@@ -31,6 +31,7 @@ public interface PropertyChangeEnabledWeatherControls extends WeatherControls {
   String PROPERTY_HUMID = "The current humidity";
   /** A property name for the updated date. */
   String PROPERTY_UPDATE = "The last time it was updated";
+  String PROPERTY_SETTING = "Setting";
   /**
     * Add a PropertyChangeListener to the listener list. The listener is registered for 
     * all properties. The same listener object may be added more than once, and will be 

@@ -67,6 +67,7 @@ public class WeatherController extends JPanel {
     myWeather.changeDateTime();
   }
   
+
   /**
    * Handles the weather update when the timer starts.
    * 
@@ -109,7 +110,8 @@ public class WeatherController extends JPanel {
     setting.add(settingButton);
     frame.add(setting, BorderLayout.SOUTH);
     
-    settingButton.addActionListener(new ActionListener() { // Ai Nguyen
+    // Ai Nguyen, Mercedes Chea {
+    settingButton.addActionListener(new ActionListener() { 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFrame myPanel = new JFrame("Settings");
@@ -118,17 +120,28 @@ public class WeatherController extends JPanel {
 			myPanel.setPreferredSize(new Dimension(300, 300));
 		
 			JButton myF = new JButton("Fahrenheit");
+			myF.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					weather.updateCurrentTempToC(" F");	
+				}
+			});
 			JButton myC = new JButton("Celcius");
+			myC.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					weather.updateCurrentTempToF(" C");
+				}
+			});
 			JPanel myP = new JPanel();
 			myP.add(myF);
 			myP.add(myC); 
 			myPanel.add(myP, BorderLayout.CENTER);
-			myPanel.pack();
-				
+			myPanel.pack();	
 		}
     	
     });
-    
+    // } 
     
     // The date and time need to listen to changes in the weather/time. 
     weather.addPropertyChangeListener(
@@ -138,7 +151,8 @@ public class WeatherController extends JPanel {
         PropertyChangeEnabledWeatherControls.PROPERTY_UPDATE, stats);
     weather.addPropertyChangeListener(
         PropertyChangeEnabledWeatherControls.PROPERTY_TEMP, stats);
-    System.out.println(PropertyChangeEnabledWeatherControls.PROPERTY_TEMP);
+    
+    
     weather.addPropertyChangeListener(
         PropertyChangeEnabledWeatherControls.PROPERTY_WIND, stats);
     weather.addPropertyChangeListener(
@@ -167,4 +181,6 @@ public class WeatherController extends JPanel {
     frame.setResizable(false);
     frame.setVisible(true);
   }
+  
+
 }

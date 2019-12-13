@@ -31,7 +31,7 @@ public class ObservableWeather implements PropertyChangeEnabledWeatherControls {
   /** Stores this objects time. */
   private LocalDateTime myDate;
   /** A weather sensor for temperature. */
-  private Sensor myTempSensor;
+  private TempSensor myTempSensor;
   /** A weather sensor for wind speed. */
   private Sensor myWindSensor;
   /** A weather sensor for rain total. */
@@ -94,6 +94,7 @@ public class ObservableWeather implements PropertyChangeEnabledWeatherControls {
   public void updateWeather() {
     // Gets new weather statistics
     final int newTemp = myTempSensor.reportWeather();
+    
     final int newSpeed = myWindSensor.reportWeather();
     final int newRain = myRainSensor.reportWeather();
     final int newHumid = myHumidSensor.reportWeather();
@@ -107,10 +108,48 @@ public class ObservableWeather implements PropertyChangeEnabledWeatherControls {
     myHumids.add(newHumid);
     // Listeners are notified.
     myPcs.firePropertyChange(PROPERTY_UPDATE, myDate, date.format(updateTime));
-    myPcs.firePropertyChange(PROPERTY_TEMP, 0, newTemp);
+    myPcs.firePropertyChange(PROPERTY_TEMP, 0, newTemp + " F");
+  
     myPcs.firePropertyChange(PROPERTY_WIND, 0, newSpeed);
     myPcs.firePropertyChange(PROPERTY_RAIN, 0, newRain);
     myPcs.firePropertyChange(PROPERTY_HUMID, 0, newHumid);  
+  }
+  
+
+  /**
+   * Convert current temp to C
+   * Ai Nguyen, Mercedes Chea
+   */
+  public void updateCurrentTempToC(String sign) {
+	  	//(current-32)*5/9;
+	    // Gets new weather statistics
+	  	final int newTemp = myTempSensor.getTemp() * 9 / 5 + 32;
+	  	
+
+	    // Adds weather statistics to the data that's tracked.
+	    myTemps.add(newTemp);
+
+	    // Listeners are notified.
+	    myPcs.firePropertyChange(PROPERTY_TEMP, 0, newTemp + sign);
+ 
+  }
+  
+  /**
+   * Convert current temp to F
+   * Ai Nguyen, Mercedes Chea
+   */
+  public void updateCurrentTempToF(String sign) {
+	  	//((9*current)/5)+32;
+	    // Gets new weather statistics
+	  	final int newTemp = ((myTempSensor.getTemp() - 32) * 5 / 9);
+	    
+
+	    // Adds weather statistics to the data that's tracked.
+	    myTemps.add(newTemp);
+
+	    // Listeners are notified.
+	    myPcs.firePropertyChange(PROPERTY_TEMP, 0, newTemp + sign);
+ 
   }
 
   @Override

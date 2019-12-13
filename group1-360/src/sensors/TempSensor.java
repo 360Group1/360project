@@ -13,7 +13,7 @@ package sensors;
  * @version 6 December 2019
  *
  */
-public class TempSensor implements Sensor {
+public class TempSensor{
   /** An integer to set the initial temperature. This 
     * is just a simulator so is not pulling from the web. 
     */
@@ -26,17 +26,26 @@ public class TempSensor implements Sensor {
     myInitial = 60;
   }
   
-  @Override
   public int reportWeather() {
     // This is just a simulator, so the value is randomly selected
     // from the range InitialValue +- 10. This is to prevent drastic
     // changes within seconds. 
     int max = myInitial + 10; 
     int min = myInitial - 10; 
-    int temp = Math.abs((int)(Math.random() * (max - min)) + min);
-    myInitial = temp;
-    return temp;
+    myInitial = Math.abs((int)(Math.random() * (max - min)) + min); //Modified by Ai Nguyen
+    return myInitial;
   }
+  
+  /**
+   * Get current temp
+   * @return
+   * Ai Nguyen
+   */
+  public int getTemp() {
+	  return myInitial;
+  }
+  
+  
 }
 
 

@@ -20,4 +20,5 @@ public interface Sensor {
     * @return An integer representing a weather statistic.
     */
   int reportWeather();
+  
 }
