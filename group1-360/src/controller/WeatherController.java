@@ -10,6 +10,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -100,6 +103,32 @@ public class WeatherController extends JPanel {
     // A panel to put in our components. It has a grid layout arranged in a 3x3.
     final JPanel content = new JPanel();
     content.setLayout(new GridLayout(3, 3));
+    final JPanel setting = new JPanel();
+    
+    JButton settingButton = new JButton("Settings");
+    setting.add(settingButton);
+    frame.add(setting, BorderLayout.SOUTH);
+    
+    settingButton.addActionListener(new ActionListener() { // Ai Nguyen
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JFrame myPanel = new JFrame("Settings");
+			myPanel.setVisible(true);
+			myPanel.setLayout(new BorderLayout());
+			myPanel.setPreferredSize(new Dimension(300, 300));
+		
+			JButton myF = new JButton("Fahrenheit");
+			JButton myC = new JButton("Celcius");
+			JPanel myP = new JPanel();
+			myP.add(myF);
+			myP.add(myC); 
+			myPanel.add(myP, BorderLayout.CENTER);
+			myPanel.pack();
+				
+		}
+    	
+    });
+    
     
     // The date and time need to listen to changes in the weather/time. 
     weather.addPropertyChangeListener(
@@ -109,6 +138,7 @@ public class WeatherController extends JPanel {
         PropertyChangeEnabledWeatherControls.PROPERTY_UPDATE, stats);
     weather.addPropertyChangeListener(
         PropertyChangeEnabledWeatherControls.PROPERTY_TEMP, stats);
+    System.out.println(PropertyChangeEnabledWeatherControls.PROPERTY_TEMP);
     weather.addPropertyChangeListener(
         PropertyChangeEnabledWeatherControls.PROPERTY_WIND, stats);
     weather.addPropertyChangeListener(
