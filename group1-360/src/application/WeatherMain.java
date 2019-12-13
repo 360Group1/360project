@@ -15,7 +15,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  * A main application that launches a Weather System.
  * 
- * @author Brent O'Neill
+ * @author Brent O'Neill, Ai Nguyen, Mercedes Chea
  * @version  5 December 2019
  */
 public final class WeatherMain {

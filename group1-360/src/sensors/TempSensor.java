@@ -9,7 +9,7 @@ package sensors;
 /**
  * A class simulating a temperature sensor. 
  * 
- * @author Brent O'Neill
+ * @author Brent O'Neill, Ai Nguyen, Mercedes Chea
  * @version 6 December 2019
  *
  */

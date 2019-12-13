@@ -2,6 +2,7 @@
  * TCSS 360 Autumn 2019
  * Instructor: Kivanc Dincer,
  * ObservableWeather.java - Represents an observable weather object.
+ * 
  */
 
 package model;
@@ -25,7 +26,7 @@ import sensors.WindSensor;
 /** 
  * An ObservableWeather object, it is capable of viewing the weather. 
  * 
- * @author Brent O'Neill
+ * @author Brent O'Neill, Ai Nguyen, Mercedes Chea
  * @version 6 December 2019
  */
 public class ObservableWeather implements PropertyChangeEnabledWeatherControls {

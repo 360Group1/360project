@@ -25,7 +25,7 @@ import view.WeatherView;
 /**
  * A GUI controller for allowing the user to use the weather system.
  * 
- * @author Brent O'Neill
+ * @author Brent O'Neill, Ai Nguyen, Mercedes Chea
  * @version 6 December 2019
  *
  */
