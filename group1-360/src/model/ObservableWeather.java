@@ -12,6 +12,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import sensors.HumiditySensor;
 import sensors.RainSensor;
 import sensors.Sensor;
@@ -101,6 +105,14 @@ public class ObservableWeather implements PropertyChangeEnabledWeatherControls {
     final DateTimeFormatter date = 
         DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
     final LocalDateTime updateTime = LocalDateTime.now();
+    
+    // Ai Nguyen Mercedes Chea {
+    if (newTemp > 150 || newSpeed > 70 || newRain > 30 || newHumid > 80) {
+        JOptionPane.showMessageDialog(null, "This area has hazardous conditions!", "Warning", 
+                                    JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/hazard.png"));
+    }
+    // }
+    
     // Adds weather statistics to the data that's tracked.
     myTemps.add(newTemp);
     myWinds.add(newSpeed);
